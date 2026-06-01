@@ -1,0 +1,12 @@
+spring.application.name=API-GATEWAY
+
+server.port=8085
+
+# Eureka Server URL
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+# Enable service discovery
+spring.cloud.gateway.discovery.locator.enabled=true
+
+# Lowercase service ids
+spring.cloud.gateway.discovery.locator.lower-case-service-id=true

@@ -1,0 +1,33 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Quiz;
+import com.example.demo.service.QuestionCleint;
+import com.example.demo.service.QuizService;
+
+@RestController
+public class QuizController {
+	
+	@Autowired
+	QuizService quizService;
+	
+	@Autowired
+	QuestionCleint cleint;
+	
+	@PostMapping("/quiz")
+	public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz)
+	{
+		 Quiz creatdQuiz =  quizService.addQuiz(quiz);
+		 return new ResponseEntity<>(creatdQuiz,HttpStatus.CREATED);
+	}
+	
+	
+	
+
+}

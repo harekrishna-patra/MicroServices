@@ -1,0 +1,22 @@
+spring.application.name=API-GATEWAY
+
+server.port=8085
+
+# Eureka Server URL
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+# Enable service discovery
+spring.cloud.gateway.discovery.locator.enabled=true
+
+# Lowercase service ids
+spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+
+# Route for Question Service
+spring.cloud.gateway.routes[0].id=QUESTIONS
+spring.cloud.gateway.routes[0].uri=lb://QUESTION-SERVICE
+spring.cloud.gateway.routes[0].predicates[0]=Path=/question/**
+
+# Route for Quiz Service
+spring.cloud.gateway.routes[1].id=QUIZ
+spring.cloud.gateway.routes[1].uri=lb://QUIZ-SERVICE
+spring.cloud.gateway.routes[1].predicates[0]=Path=/quiz/**
